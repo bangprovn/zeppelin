@@ -2,28 +2,28 @@
     [{
         "@context" : "http://schema.org",
         "@type" : "Event",
-        "name" : "{{ site.title }}",
-        "description": "{{ site.description }}",
-        "image" : "{{ site.socialImageSrcGooglePlus | prepend: site.baseurl | prepend: site.url }}",
+        "name" : "{{ site.data.[site.lang].general.basic.title }}",
+        "description": "{{ site.data.[site.lang].general.basic.description }}",
+        "image" : "{{ site.data.[site.lang].general.basic.socialImageSrcGooglePlus | prepend: site.baseurl | prepend: site.url }}",
         "url" : "{{ site.url }}",
-        "startDate" : "{{ site.eventStartTime }}",
-        "doorTime" : "{{ site.eventDoorTime }}",
-        "endDate" : "{{ site.eventEndTime }}",
+        "startDate" : "{{ site.data.[site.lang].index.location-map.startTime }}",
+        "doorTime" : "{{ site.data.[site.lang].index.location-map.dorTime }}",
+        "endDate" : "{{ site.data.[site.lang].index.location-map.endTime }}",
         "location" : {
             "@type" : "Place",
-            "name" : "{{ site.eventLocationName }}",
-            "sameAs" : "{{ site.eventLocationLink }}",
+            "name" : "{{ site.data.[site.lang].index.location-map.name }}",
+            "sameAs" : "{{ site.data.[site.lang].index.location-map.link }}",
             "address" : {
                 "@type" : "PostalAddress",
-                "streetAddress" : "{{ site.eventStreetAddress }}",
-                "addressLocality" : "{{ site.eventAddressLocality }}",
-                "addressRegion" : "{{ site.eventAddressLocalityRegion }}",
-                "postalCode" : "{{ site.eventPostalCode }}",
-                "addressCountry" : "{{ site.eventAddressCountry }}"
+                "streetAddress" : "{{ site.data.[site.lang].index.location-map.streetAddress }}",
+                "addressLocality" : "{{ site.data.[site.lang].index.location-map.addressLocality }}",
+                "addressRegion" : "{{ site.data.[site.lang].index.location-map.addressLocalityRegion }}",
+                "postalCode" : "{{ site.data.[site.lang].index.location-map.postalCode }}",
+                "addressCountry" : "{{ site.data.[site.lang].index.location-map.addressCountry }}"
             },
             "geo" : {
                 "@type" : "GeoCoordinates",
-                {% assign coordinates = site.eventPlaceCoordinates | split:"," %}
+                {% assign coordinates = site.data.[site.lang].index.location-map.placeCoordinates | split:"," %}
                 "latitude" : "{{ coordinates[0] }}",
                 "longitude" : "{{ coordinates[1] }}"
             }
@@ -31,44 +31,44 @@
         // Not supported yet
         // "organizer" : {
         //     "@type" : "Organization",
-        //     "name" : "{{ site.organizerName }}",
-        //     "alternateName" : "{{ site.organizerAlternateName }}",
-        //     "description" : "{{ site.organizerDescription }}",
-        //     "logo" : "{{ site.organizerLogo | prepend: site.baseurl | prepend: site.url }}",
-        //     "email" : "{{ site.organizerEmail }}",
-        //     "sameAs" : "{{ site.organizerLink }}"
+        //     "name" : "{{ site.data.[site.lang].general.basic.organizerName }}",
+        //     "alternateName" : "{{ site.data.[site.lang].general.basic.organizerAlternateName }}",
+        //     "description" : "{{ site.data.[site.lang].general.basic.organizerDescription }}",
+        //     "logo" : "{{ site.data.[site.lang].general.basic.organizerLogo | prepend: site.baseurl | prepend: site.url }}",
+        //     "email" : "{{ site.data.[site.lang].general.basic.organizerEmail }}",
+        //     "sameAs" : "{{ site.data.[site.lang].general.basic.organizerLink }}"
         // },
         "subEvent" : {
             "@type" : "Event",
-            "name" : "{{ site.hackathonTitle }}",
-            "description": "{{ site.hackathonRows[0].details }}",
-            "image" : "{{ site.socialImageSrcGooglePlus | prepend: site.baseurl | prepend: site.url }}",
+            "name" : "{{ site.data.[site.lang].hackathon.about.title }}",
+            "description": "{{ site.data.[site.lang].hackathon.about.rows[0].details }}",
+            "image" : "{{ site.data.[site.lang].general.basic.socialImageSrcGooglePlus | prepend: site.baseurl | prepend: site.url }}",
             "url" : "{{ site.url | append: site.baseurl }}/hackathon/",
-            "startDate" : "{{ site.hackathonStartTime }}",
-            "doorTime" : "{{ site.hackathonDoorTime }}",
-            "endDate" : "{{ site.hackathonEndTime }}",
+            "startDate" : "{{ site.data.[site.lang].hackathon.location.startTime }}",
+            "doorTime" : "{{ site.data.[site.lang].hackathon.location.doorTime }}",
+            "endDate" : "{{ site.data.[site.lang].hackathon.location.endTime }}",
             "location" : {
                 "@type" : "Place",
-                "name" : "{{ site.hackathonLocationName }}",
-                "sameAs" : "{{ site.hackathonLocationLink }}",
+                "name" : "{{ site.data.[site.lang].hackathon.location.name }}",
+                "sameAs" : "{{ site.data.[site.lang].hackathon.location.link }}",
                 "address" : {
                     "@type" : "PostalAddress",
-                    "streetAddress" : "{{ site.hackathonStreetAddress }}",
-                    "addressLocality" : "{{ site.hackathonAddressLocality }}",
-                    "addressRegion" : "{{ site.hackathonAddressLocalityRegion }}",
-                    "postalCode" : "{{ site.hackathonPostalCode }}",
-                    "addressCountry" : "{{ site.hackathonAddressCountry }}"
+                    "streetAddress" : "{{ site.data.[site.lang].hackathon.location.streetAddress }}",
+                    "addressLocality" : "{{ site.data.[site.lang].hackathon.location.addressLocality }}",
+                    "addressRegion" : "{{ site.data.[site.lang].hackathon.location.addressLocalityRegion }}",
+                    "postalCode" : "{{ site.data.[site.lang].hackathon.location.postalCode }}",
+                    "addressCountry" : "{{ site.data.[site.lang].hackathon.location.addressCountry }}"
                 },
                 "geo" : {
                     "@type" : "GeoCoordinates",
-                    {% assign hackathonCoordinates = site.hackathonPlaceCoordinates | split:"," %}
+                    {% assign hackathonCoordinates = site.data.[site.lang].hackathon.location.placeCoordinates | split:"," %}
                     "latitude" : "{{ hackathonCoordinates[0] }}",
                     "longitude" : "{{ hackathonCoordinates[1] }}"
                 }
             }
         },
         "offers" : [
-        {% for ticketsOffer in site.ticketsOffers %}
+        {% for ticketsOffer in site.data.[site.lang].index.tickets.ticketsOffers %}
         {
             "@type" : "Offer",
             "name" : "{{ ticketsOffer.name }}",
@@ -81,7 +81,7 @@
         {% endfor %} 
         ],
         "performer" : [ 
-        {% for speaker in site.data.speakers %}
+        {% for speaker in site.data.[site.lang].speakers.speakers-data %}
         {
             "@type" : "Person",
             "name" : "{{ speaker.name }} {{ speaker.surname }}",

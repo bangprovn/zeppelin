@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Speakers
+title: titles.speakers
 permalink: /speakers/
 modal: all
 ---
 
-{% include top-section.html %}
+{% include general/top-section.html %}
 
-{% if site.showSessions %}
-    {% include speakers-list.html %}
+{% if site.data.[site.lang].speakers.speakers.showSessions %}
+    {% include speakers/speakers-list.html %}
 {% else %}
-    {% include speakers-list-2.html %}
+    {% include speakers/speakers-list-2.html %}
 {% endif %}
 
